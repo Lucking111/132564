@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的个人博客 | 大数据学习与成长</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入Font Awesome图标 -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <!-- 自定义Tailwind配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF', // 主色调：科技蓝
+                        secondary: '#36CFC9', // 辅助色：青绿色（中医药+科技结合）
+                        neutral: '#1F2937', // 中性色
+                        school: '#0F5238', // 学校特色色：深绿色
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <!-- 自定义样式 -->
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 12px 20px rgba(22, 93, 255, 0.1);
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 font-sans text-neutral">
+    <!-- 导航栏 -->
+    <header class="fixed w-full bg-white/95 backdrop-blur-sm shadow-sm z-50 transition-all duration-300">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl md:text-2xl font-bold text-primary flex items-center gap-2">
+                <i class="fa fa-code"></i>
+                <span>个人博客</span>
+            </a>
+            
+            <!-- 桌面端导航 -->
+            <ul class="hidden md:flex gap-8">
+                <li><a href="#home" class="hover:text-primary transition-colors font-medium">首页</a></li>
+                <li><a href="#about" class="hover:text-primary transition-colors font-medium">关于我</a></li>
+                <li><a href="#study" class="hover:text-primary transition-colors font-medium">专业学习</a></li>
+                <li><a href="#hobbies" class="hover:text-primary transition-colors font-medium">兴趣爱好</a></li>
+                <li><a href="#project" class="hover:text-primary transition-colors font-medium">项目实践</a></li>
+                <li><a href="#contact" class="hover:text-primary transition-colors font-medium">联系我</a></li>
+            </ul>
+            
+            <!-- 移动端菜单按钮 -->
+            <button id="menuBtn" class="md:hidden text-neutral text-xl">
+                <i class="fa fa-bars"></i>
+            </button>
+        </nav>
+        
+        <!-- 移动端导航菜单 -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white border-t border-gray-100">
+            <ul class="container mx-auto px-4 py-2 flex flex-col gap-4">
+                <li><a href="#home" class="block py-2 hover:text-primary transition-colors">首页</a></li>
+                <li><a href="#about" class="block py-2 hover:text-primary transition-colors">关于我</a></li>
+                <li><a href="#study" class="block py-2 hover:text-primary transition-colors">专业学习</a></li>
+                <li><a href="#hobbies" class="block py-2 hover:text-primary transition-colors">兴趣爱好</a></li>
+                <li><a href="#project" class="block py-2 hover:text-primary transition-colors">项目实践</a></li>
+                <li><a href="#contact" class="block py-2 hover:text-primary transition-colors">联系我</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- 英雄区 -->
+    <section id="home" class="pt-32 pb-20 bg-gradient-to-br from-primary/5 to-secondary/5">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2 space-y-6">
+                <h1 class="text-[clamp(1.8rem,5vw,3.2rem)] font-bold leading-tight text-shadow mb-4">
+                    嗨，我是<span class="text-primary">大数据专业</span>的<br>大三学生
+                </h1>
+                <p class="text-lg text-gray-600 leading-relaxed">
+                    就读于贵州中医药大学时珍学院<br>
+                    数据科学与大数据技术专业<br>
+
+                </p>
+                <div class="flex gap-4 flex-wrap">
+                    <a href="#about" class="bg-primary text-white px-8 py-3 rounded-lg hover:bg-primary/90 transition-colors shadow-md">
+                        了解我的学习之路
+                    </a>
+                    <a href="#project" class="border border-primary text-primary px-8 py-3 rounded-lg hover:bg-primary/5 transition-colors">
+                        查看我的项目
+                    </a>
+                </div>
+                
+                <!-- 学校标签 -->
+                <div class="flex flex-wrap gap-3 pt-4">
+                    <span class="px-3 py-1 bg-school/10 text-school rounded-full text-sm">贵州中医药大学时珍学院</span>
+                    <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">数据科学与大数据技术</span>
+                    <span class="px-3 py-1 bg-secondary/10 text-secondary rounded-full text-sm">大三在读</span>
+                    <span class="px-3 py-1 bg-yellow-100 text-yellow-600 rounded-full text-sm">中医药大数据</span>
+                </div>
+            </div>
+            
+            <!-- 个人形象图 -->
+            <div class="md:w-1/2 relative">
+                <div class="w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden shadow-2xl border-8 border-white mx-auto">
+                    <img src="2.webp" alt="个人形象照" class="w-full h-full object-cover">
+                </div>
+                <!-- 装饰元素 -->
+                <div class="absolute -bottom-4 -left-4 w-20 h-20 bg-primary/20 rounded-xl -z-10"></div>
+                <div class="absolute -top-4 -right-4 w-28 h-28 bg-secondary/20 rounded-xl -z-10"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我 -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">关于我</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+                    一名大数据专业大三学生的个人档案
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- 校园生活照片 -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="rounded-xl overflow-hidden shadow-lg h-56">
+                        <img src="https://picsum.photos/id/1082/600/800" alt="图书馆学习" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="rounded-xl overflow-hidden shadow-lg h-56 mt-8">
+                        <img src="https://picsum.photos/id/180/600/800" alt="实验室实践" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="rounded-xl overflow-hidden shadow-lg h-56 -mt-8">
+                        <img src="https://picsum.photos/id/20/600/800" alt="校园生活" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="rounded-xl overflow-hidden shadow-lg h-56">
+                        <img src="https://picsum.photos/id/48/600/800" alt="专业课程学习" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                    </div>
+                </div>
+                
+                <!-- 个人信息 -->
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-semibold text-primary">个人档案</h3>
+                    
+                    <div class="bg-gray-50 p-6 rounded-xl border border-gray-100">
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-4">
+                                <i class="fa fa-user text-primary mt-1 text-lg"></i>
+                                <div>
+                                    <span class="font-medium text-lg">姓名：</span>
+                                    <span class="text-gray-600">高富然</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <i class="fa fa-birthday-cake text-primary mt-1 text-lg"></i>
+                                <div>
+                                    <span class="font-medium text-lg">年龄：</span>
+                                    <span class="text-gray-600">21岁</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <i class="fa fa-graduation-cap text-primary mt-1 text-lg"></i>
+                                <div>
+                                    <span class="font-medium text-lg">学校/专业：</span>
+                                    <span class="text-gray-600">贵州中医药大学时珍学院 / 数据科学与大数据技术</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <i class="fa fa-calendar text-primary mt-1 text-lg"></i>
+                                <div>
+                                    <span class="font-medium text-lg">年级：</span>
+                                    <span class="text-gray-600">2023级 大三在读</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <i class="fa fa-map-marker text-primary mt-1 text-lg"></i>
+                                <div>
+                                    <span class="font-medium text-lg">所在地：</span>
+                                    <span class="text-gray-600">贵州省贵阳市</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <i class="fa fa-envelope text-primary mt-1 text-lg"></i>
+                                <div>
+                                    <span class="font-medium text-lg">邮箱：</span>
+                                    <span class="text-gray-600">2506048734@qq.com</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <h4 class="text-xl font-medium">自我简介</h4>
+                        <p class="text-gray-600 leading-relaxed">
+                            我是一名热爱大数据技术的大三学生，对数据挖掘、机器学习和中医药大数据应用有浓厚兴趣。
+                            在校期间成绩优异，多次获得校级奖学金，担任班级学习委员。
+                        </p>
+                        <p class="text-gray-600 leading-relaxed">
+                            熟悉Python、SQL、Hadoop等大数据技术栈，正在学习机器学习算法和中医药数据处理相关知识，
+                            希望将大数据技术与中医药领域相结合，探索中医药现代化发展的新路径。
+                        </p>
+                    </div>
+                    
+                    <!-- 技能标签 -->
+                    <div>
+                        <h4 class="font-medium mb-3">掌握技能</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Python</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">SQL</span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">数据分析</span>
+                            <span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm">Excel</span>
+                            <span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm">Hadoop</span>
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm">机器学习基础</span>
+                            <span class="px-3 py-1 bg-pink-100 text-pink-700 rounded-full text-sm">数据可视化</span>
+                            <span class="px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-sm">中医药基础</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 专业学习 -->
+    <section id="study" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">专业学习</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+                    大数据专业的学习历程和核心课程
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 核心课程 -->
+                <div class="bg-white rounded-2xl shadow-md p-6 card-hover">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa fa-book text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">核心课程</h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-center gap-2">
+                            <i class="fa fa-check-circle text-primary"></i>
+                            <span>高等数学、线性代数、概率论</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa fa-check-circle text-primary"></i>
+                            <span>Python程序设计、数据结构</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa fa-check-circle text-primary"></i>
+                            <span>数据库原理与应用、SQL</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa fa-check-circle text-primary"></i>
+                            <span>大数据导论、Hadoop生态系统</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa fa-check-circle text-primary"></i>
+                            <span>数据挖掘、机器学习</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa fa-check-circle text-primary"></i>
+                            <span>中医药基础、中医药信息学</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- 学习成果 -->
+                <div class="bg-white rounded-2xl shadow-md p-6 card-hover">
+                    <div class="w-14 h-14 bg-secondary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa fa-trophy text-secondary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">学习成果</h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-center gap-2">
+                            <i class="fa fa-star text-yellow-500"></i>
+                            <span>专业排名前10%，获校级二等奖学金</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa fa-star text-yellow-500"></i>
+                            <span></span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa fa-star text-yellow-500"></i>
+                            <span>Python编程能力认证（PCEP）</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa fa-star text-yellow-500"></i>
+                            <span>参与校级中医药大数据科研项目</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa fa-star text-yellow-500"></i>
+                            <span></span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa fa-star text-yellow-500"></i>
+                            <span>通过大学英语六级（CET-4）</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- 学习规划 -->
+                <div class="bg-white rounded-2xl shadow-md p-6 card-hover">
+                    <div class="w-14 h-14 bg-school/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa fa-road text-school text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">学习规划</h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-center gap-2">
+                            <i class="fa fa-arrow-right text-school"></i>
+                            <span>深入学习机器学习算法和实践应用</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa fa-arrow-right text-school"></i>
+                            <span>掌握Spark大数据处理框架</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa fa-arrow-right text-school"></i>
+                            <span>研究中医药大数据分析方法</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa fa-arrow-right text-school"></i>
+                            <span>准备考研/实习，提升实战能力</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa fa-arrow-right text-school"></i>
+                            <span>参加更多大数据相关竞赛</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa fa-arrow-right text-school"></i>
+                            <span>考取大数据工程师相关证书</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 兴趣爱好 -->
+    <section id="hobbies" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">兴趣爱好</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+                    学习之外，这些爱好丰富了我的大学生活
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 爱好1：编程学习 -->
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden card-hover border border-gray-100">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/0/800/600" alt="编程学习" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3 flex items-center gap-2">
+                            <i class="fa fa-code text-primary"></i>
+                            编程学习
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            喜欢利用课余时间学习编程技术，经常在GitHub、CSDN、力扣等平台学习和练习。
+                            每天坚持编程练习，参与开源项目，编写技术博客，目前已完成多个Python小项目，
+                            包括数据分析工具、爬虫程序等。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 爱好2：数据分析 -->
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden card-hover border border-gray-100">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/180/800/600" alt="数据分析" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3 flex items-center gap-2">
+                            <i class="fa fa-bar-chart text-secondary"></i>
+                            数据分析
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            热衷于各类数据可视化和分析项目，喜欢从数据中发现规律和洞察。
+                            曾参与学校的中医药数据统计分析项目，使用Python的Matplotlib、Seaborn、
+                            Pandas等库进行数据处理和可视化，探索中医药数据的潜在价值。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 爱好3：阅读 -->
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden card-hover border border-gray-100">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/1074/800/600" alt="阅读学习" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3 flex items-center gap-2">
+                            <i class="fa fa-book text-school"></i>
+                            专业阅读
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            喜欢阅读大数据、人工智能、机器学习相关的专业书籍，每月至少阅读1本技术书籍。
+                            近期阅读《Python数据科学手册》《机器学习实战》《大数据时代》等，
+                            并做详细的读书笔记和实践总结。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 爱好4：运动健身 -->
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden card-hover border border-gray-100">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/1058/800/600" alt="运动健身" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3 flex items-center gap-2">
+                            <i class="fa fa-heartbeat text-red-500"></i>
+                            运动健身
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            坚持每周3-4次的体育锻炼，包括篮球、跑步、健身等。喜欢和同学一起打篮球，
+                            既锻炼身体又增进友谊。保持良好的身体素质，才能更好地应对繁重的学习任务，
+                            提高学习效率。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 爱好5：摄影记录 -->
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden card-hover border border-gray-100">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/96/800/600" alt="摄影记录" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3 flex items-center gap-2">
+                            <i class="fa fa-camera text-purple-500"></i>
+                            摄影记录
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            喜欢用手机记录校园生活和学习瞬间，特别是实验室、图书馆的学习场景。
+                            也喜欢拍摄贵州的自然风光，用镜头记录家乡的美景，偶尔会用Python做照片
+                            的批量处理和分析。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 爱好6：社团活动 -->
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden card-hover border border-gray-100">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://picsum.photos/id/20/800/600" alt="社团活动" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3 flex items-center gap-2">
+                            <i class="fa fa-users text-yellow-500"></i>
+                            社团活动
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            担任学校大数据社团干事，组织编程学习小组、技术分享会等活动。
+                            喜欢和志同道合的同学一起讨论技术问题，共同学习进步。也参与志愿者
+                            活动，在实践中锻炼自己的组织能力和沟通能力。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- 联系我 -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">联系我</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+                    交流学习经验，探讨技术问题，欢迎联系
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- 联系表单 -->
+                <div class="bg-gray-50 p-8 rounded-2xl shadow-sm border border-gray-100">
+                    <h3 class="text-2xl font-semibold mb-6">发送消息</h3>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 mb-2 font-medium">姓名</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all" placeholder="请输入你的姓名">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 mb-2 font-medium">邮箱/QQ</label>
+                            <input type="text" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all" placeholder="方便我回复你">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-gray-700 mb-2 font-medium">交流主题</label>
+                            <select id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all">
+                                <option value="">请选择交流主题</option>
+                                <option value="study">学习经验交流</option>
+                                <option value="project">项目技术探讨</option>
+                                <option value="competition">学科竞赛组队</option>
+                                <option value="internship">实习就业交流</option>
+                                <option value="other">其他</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-gray-700 mb-2 font-medium">留言内容</label>
+                            <textarea id="message" rows="6" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all" placeholder="想和我交流什么？"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary/90 transition-colors font-medium text-lg shadow-sm">
+                            发送消息
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- 联系信息 -->
+                <div class="bg-gray-50 p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-8">联系方式</h3>
+                        
+                        <ul class="space-y-6">
+                            <li class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fa fa-envelope text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-lg mb-1">学校邮箱</h4>
+                                    <p class="text-gray-600">gzyszxy_xb@163.com</p>
+                                    <p class="text-gray-500 text-sm mt-1">工作日回复</p>
+                                </div>
+                            </li>
+                            
+                            <li class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fa fa-qq text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-lg mb-1">QQ号</h4>
+                                    <p class="text-gray-600">2506048734</p>
+                                    <p class="text-gray-500 text-sm mt-1">备注：大数据学习交流</p>
+                                </div>
+                            </li>
+                            
+                            <li class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fa fa-github text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-lg mb-1">GitHub</h4>
+                                    <p class="text-gray-600">github.com/student-wang</p>
+                                    <p class="text-gray-500 text-sm mt-1">包含我的学习项目和代码</p>
+                                </div>
+                            </li>
+                            
+                            <li class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fa fa-map-marker text-primary text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-lg mb-1">学校地址</h4>
+                                    <p class="text-gray-600">贵州省贵阳市修文县贵州中医药大学时珍学院</p>
+                                    <p class="text-gray-500 text-sm mt-1">信息工程学院</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 二维码 -->
+                    <div class="mt-12 flex flex-col items-center">
+                        <div class="w-48 h-48 bg-white p-2 border border-gray-200 rounded-lg shadow-sm mb-4">
+                            <img src="1.jpg" alt="微信二维码" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-gray-600 text-center">扫码添加我的微信<br>备注：大数据学习交流</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-neutral text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                        <i class="fa fa-code text-primary"></i>
+                        大数据学习笔记
+                    </h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        一名贵州中医药大学时珍学院<br>
+                        大数据专业大三学生的学习博客<br>
+                        记录学习历程，分享成长点滴
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors">
+                            <i class="fa fa-github"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-blue-500 transition-colors">
+                            <i class="fa fa-qq"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-green-500 transition-colors">
+                            <i class="fa fa-wechat"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-red-500 transition-colors">
+                            <i class="fa fa-csdn"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">快速导航</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">首页</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">关于我</a></li>
+                        <li><a href="#study" class="text-gray-400 hover:text-white transition-colors">专业学习</a></li>
+                        <li><a href="#hobbies" class="text-gray-400 hover:text-white transition-colors">兴趣爱好</a></li>
+                        <li><a href="#project" class="text-gray-400 hover:text-white transition-colors">项目实践</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">联系我</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">学习资源</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Python学习笔记</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">SQL教程</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">大数据学习路线</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">机器学习入门</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">中医药大数据应用</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">竞赛经验分享</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">友情链接</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">贵州中医药大学时珍学院</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">大数据技术论坛</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Python官方文档</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">GitHub</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">LeetCode</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">CSDN</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 mb-4 md:mb-0">© 2024 大数据学习博客 | 贵州中医药大学时珍学院</p>
+                <p class="text-gray-500 text-sm">
+                    个人学习记录，非官方网站
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-primary text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-primary/90 z-50">
+        <i class="fa fa-arrow-up text-xl"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // 移动端菜单切换
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = menuBtn.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        });
+        
+        // 导航栏滚动效果
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('py-2', 'shadow-md');
+                header.classList.remove('py-4');
+            } else {
+                header.classList.add('py-4');
+                header.classList.remove('py-2', 'shadow-md');
+            }
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                // 关闭移动端菜单
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    const icon = menuBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // 返回顶部按钮
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTopBtn.classList.remove('opacity-0', 'invisible');
+                backToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopBtn.classList.add('opacity-0', 'invisible');
+                backToTopBtn.classList.remove('opacity-100', 'visible');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // 表单提交
+        const contactForm = document.querySelector('form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('感谢你的留言，我会尽快回复你！');
+                contactForm.reset();
+            });
+        }
+        
+        // 图片加载动画
+        document.addEventListener('DOMContentLoaded', () => {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.classList.add('opacity-0', 'transition-opacity', 'duration-700');
+                img.onload = function() {
+                    this.classList.remove('opacity-0');
+                    this.classList.add('opacity-100');
+                }
+                // 手动触发已缓存图片的加载
+                if (img.complete) img.onload();
+            });
+        });
+    </script>
+
+</body>
+</html>
+</body>
+</html>
